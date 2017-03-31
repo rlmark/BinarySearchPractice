@@ -20,7 +20,25 @@ public class RealtorLogImplSpec {
 
     @Test
     public void canAddRealtorToMiddleOfSortedLog() {
+        Realtor realtor1 = new Realtor(1);
+        Realtor realtor3 = new Realtor(3);
+        Realtor realtor5 = new Realtor(5);
+        Realtor realtor7 = new Realtor(7);
 
+        ArrayList<Realtor> realtorList = new ArrayList<Realtor>();
+        realtorList.add(realtor1);
+        realtorList.add(realtor3);
+        realtorList.add(realtor5);
+        realtorList.add(realtor7);
+
+        RealtorLog realtorLog = new RealtorLog(realtorList);
+
+        Realtor realtor4 = new Realtor(4);
+
+        // ACT
+        realtorLog.add(realtor4);
+
+        assertThat(realtorLog.getRealtorList(), contains(realtor1, realtor3, realtor4, realtor5, realtor7));
     }
 
 }
