@@ -16,6 +16,7 @@ public class RealtorLog {
         // Check if realtorList is empty
         } else if (realtorList.isEmpty()) {
             realtorList.add(realtor);
+            // need to add check if it needs to be added to front.
         } else {
             // Find the leftmost point
             Integer left = 0;
@@ -25,6 +26,7 @@ public class RealtorLog {
             Integer middle = this.realtorList.size() / 2;
 
             loop(left, right, middle, realtor);
+            // instead calculate middle
         }
    }
 
@@ -38,16 +40,32 @@ public class RealtorLog {
         } else if (right - middle == 1 || middle - left == 1) {
             this.realtorList.add(middle, realtor);
         } else if (midPointLicenseNumber < licenseNumberToBeInserted) {
-            // this means that we need to look at the right side of the list now
+            // this means that we need to look at the right side of the array now
             loop(middle, right, ((right - middle) / 2) + middle, realtor);
         } else if (midPointLicenseNumber > licenseNumberToBeInserted) {
-            // this means that we need to look at the left side of the list
+            // this means that we need to look at the left side of the array
             loop(left, middle, (middle - left) / 2, realtor);
         } else {
             this.realtorList.add(middle, realtor);
             return;
         }
     }
+
+
+
+    // while high > low + 1.
+    // add the new thing at High index.
+
+    public void addRecursively(Realtor obj) {
+        // to this.
+
+
+    }
+
+    public void addRecursivelyHelper(int low, int high, Realtor realtor){
+
+    }
+
 
     public ArrayList<Realtor> getRealtorList() {
         if (realtorList == null) {
