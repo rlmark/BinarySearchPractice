@@ -6,29 +6,29 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 public class RealtorLogImplSpec {
-//
-//    @Test
-//    public void shouldAddRealtorToEmptyLog() {
-//        Realtor realtor = new Realtor(1234);
-//        RealtorLog log = new RealtorLog(new ArrayList<Realtor>());
-//
-//        // ACT
-//        log.add(realtor);
-//
-//        assertThat(log.getRealtorList(), contains(realtor));
-//    }
-//
-//    @Test
-//    public void shouldAddRealtorWhenListIsNull() {
-//        Realtor realtor = new Realtor(1234);
-//        RealtorLog log = new RealtorLog(null);
-//
-//        // ACT
-//        log.add(realtor);
-//
-//        assertThat(log.getRealtorList(), contains(realtor));
-//    }
-//
+
+    @Test
+    public void shouldAddRealtorToEmptyLog() {
+        Realtor realtor = new Realtor(1234);
+        RealtorLog log = new RealtorLog(new ArrayList<Realtor>());
+
+        // ACT
+        log.add(realtor);
+
+        assertThat(log.getRealtorList(), contains(realtor));
+    }
+
+    @Test
+    public void shouldAddRealtorWhenListIsNull() {
+        Realtor realtor = new Realtor(1234);
+        RealtorLog log = new RealtorLog(null);
+
+        // ACT
+        log.add(realtor);
+
+        assertThat(log.getRealtorList(), contains(realtor));
+    }
+
     @Test
     public void canAddRealtorToMiddleOfSortedLog() {
         Realtor realtor1 = new Realtor(1);
@@ -51,6 +51,30 @@ public class RealtorLogImplSpec {
 
         assertThat(realtorLog.getRealtorList(), contains(realtor1, realtor3, realtor4, realtor5, realtor7));
     }
+
+    @Test
+    public void canAddRealtor6ToMiddleOfSortedLog() {
+        Realtor realtor1 = new Realtor(1);
+        Realtor realtor3 = new Realtor(3);
+        Realtor realtor5 = new Realtor(5);
+        Realtor realtor7 = new Realtor(7);
+
+        ArrayList<Realtor> realtorList = new ArrayList<Realtor>();
+        realtorList.add(realtor1);
+        realtorList.add(realtor3);
+        realtorList.add(realtor5);
+        realtorList.add(realtor7);
+
+        RealtorLog realtorLog = new RealtorLog(realtorList);
+
+        Realtor realtor6 = new Realtor(6);
+
+        // ACT
+        realtorLog.add(realtor6);
+
+        assertThat(realtorLog.getRealtorList(), contains(realtor1, realtor3, realtor5, realtor6, realtor7));
+    }
+
     @Test
     public void canAddDuplicateValueAppropriately() {
         Realtor realtor1 = new Realtor(1);
